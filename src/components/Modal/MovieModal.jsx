@@ -1,16 +1,16 @@
 import React from "react";
 import ReactMarkdown from 'react-markdown'
-import { Movie } from "../models/movie";
-import star from "../Assets/Web 1920 – next movies/star.svg";
-import arrow from "../Assets/Web 1920 – next movies/arrow.svg";
+import star from "../../Assets/Web 1920 – next movies/star.svg";
+import arrow from "../../Assets/Web 1920 – next movies/arrow.svg";
+import './Modal.css';
 
-const MovieModal: React.FC<{ movie: Movie | null; onExit: () => void }> = (
+const MovieModal = (
   props
 ) => {
   if (props.movie !== null) {
     const { largeimage, runtime, rating, title, synopsis } = props.movie;
     return (
-      <div className="movie-modal">
+      <div className='movie-modal'>
         <div className="movie-modal-contant">
           <div className="movie-modal-img">
             <img src={largeimage} alt="" />
@@ -19,9 +19,9 @@ const MovieModal: React.FC<{ movie: Movie | null; onExit: () => void }> = (
             <div className="movie-modal-title">
               <h1>{title}</h1>
             </div>
-            <div>
-              <p className="">{`${runtime.slice(0, 2)} ${runtime.slice(2)}`}</p>
-              <p className="movie-item-rating">
+            <div className="movie-modal-parts">
+              <p className="movie-modal-runtime">{`${runtime.slice(0, 2)} ${runtime.slice(2)}`}</p><br/>
+              <p className="movie-modal-rating">
                 <span>
                   <img src={star} alt="star" />
                 </span>

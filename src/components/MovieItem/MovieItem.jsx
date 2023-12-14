@@ -1,15 +1,12 @@
 import React from "react";
-import { Movie } from "../models/movie";
-import star from "../Assets/Web 1920 – next movies/star.svg";
-import arrow from "../Assets/Web 1920 – next movies/arrow.svg";
+import star from "../../Assets/Web 1920 – next movies/star.svg";
+import arrow from "../../Assets/Web 1920 – next movies/arrow.svg";
+import './MovieItem.css';
 
-const MovieItem: React.FC<{
-  movie: Movie;
-  chooseMovieHandler: (movie: Movie) => void;
-}> = (props) => {
+const MovieItem = (props) => {
   const { id, image, title, released, rating } = props.movie;
 
-  const clickMovieHandler = (event: React.MouseEvent) => {
+  const clickMovieHandler = (event) => {
     event.preventDefault();
     props.chooseMovieHandler(props.movie);
   };

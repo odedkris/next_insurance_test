@@ -1,15 +1,12 @@
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Movies from "./components/Movies";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import { useState, useEffect} from "react";
 import "./App.css";
-import { Movie } from "./models/movie";
-import MovieModal from "./components/MovieModal";
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-  const [choosedMovie, setChoosedMovie] = useState(null);
   const [loadedMovies, setLoadedMovies] = useState([]);
+  const [moviesToShow, setMoviesToShow] = useState([])
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -22,34 +19,21 @@ function App() {
             const movies = await response.json()
             movies.sort((a, b) => b.rating - a.rating)
             setLoadedMovies(movies)
+            setMoviesToShow(movies)
         }
 
         fetchMovies()
 
     },[])
 
-  const chooseMovieHandler = (movie) => {
-    setChoosedMovie(movie);
-    setShowModal(true);
-  };
-
-  const exitMovieHandler = () => {
-    setChoosedMovie(null);
-    setShowModal(false);
-  };
-
   return (
     <div>
-      <Header />
+      <Header movies={loadedMovies} onSearchMovie={setMoviesToShow}/>
+      {/* {moviesToShow.length > 0 && <ResultsList results={moviesToShow}/>} */}
       <div className="page-title">
         <h1>Explore your next Movies and tv shows</h1>
       </div>
-      <Movies movies={loadedMovies} onChooseMovie={chooseMovieHandler} />
-      {showModal ? (
-        <MovieModal movie={choosedMovie} onExit={exitMovieHandler} />
-      ) : (
-        <></>
-      )}
+      <Movies movies={moviesToShow} />
       <Footer />
     </div>
   );
