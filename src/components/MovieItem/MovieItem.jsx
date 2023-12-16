@@ -8,18 +8,18 @@ const MovieItem = (props) => {
 
   const clickMovieHandler = (event) => {
     event.preventDefault();
-    props.chooseMovieHandler(props.movie);
+    props.onChooseMovieHandler(props.movie);
   };
 
   return (
-    <article id={`article_${id}`}>
-      <img src={image} alt="img" />
+    <article data-testid={`article_${id}`}>
+      <img src={image} alt="img" data-testid='movie-image'/>
       <h3>{`${title} (${released})`}</h3>
       <p className="movie-item-rating">
         <span>
-          <img src={star} alt="star" />
+          <img src={star} alt="star" data-testid='star-icon'/>
         </span>
-        <span>{rating}</span>
+        <span data-testid='rating'>{rating}</span>
       </p>
       <p className="movie-item-actions">
         <button
@@ -28,7 +28,7 @@ const MovieItem = (props) => {
         >
           <span> Read more</span>
           <span>
-            <img src={arrow} alt="" />
+            <img src={arrow} alt="arrow" />
           </span>
         </button>
       </p>

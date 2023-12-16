@@ -13,8 +13,8 @@ const Footer = () => {
       <div id='logo'>
         <img src={logo} alt="logo" />
       </div>
-      <div id='contact'>
-        <p id='contact-title'>Contact us</p>
+      <div data-testid='contact' id='contact'>
+        <p data-testid='contact-title' id='contact-title'>Contact us</p>
         <p id='contact-email'>support@nextmovies.com</p>
         <p id='contact-details'>Mon – Fri | 6:00am – 5:00 pm PT</p>
       </div>
